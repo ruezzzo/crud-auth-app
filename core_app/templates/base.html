@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+</style>
+<body>
+
+ <header>
+   <a href="#">My app</a>
+   <div>
+     {% if user.is_authenticated %}
+     <p>Hello, {{ user.username }}</p>
+       <a href="{% url 'create_post_view' %}">Create Post</a>
+       <a href="{% url 'logout_view' %}">Logout</a>
+       {% else %}
+     <a href="{% url 'register_view' %}">Sign Up</a>
+     <a href="{% url 'login_view' %}">Login</a>
+       {% endif %}
+   </div>
+ </header>
+
+ {% block content %}
+ {% endblock %}
+
+<footer>
+    &copy; 2026 my app
+</footer>
+
+</body>
+</html>
